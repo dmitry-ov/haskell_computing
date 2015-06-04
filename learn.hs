@@ -42,6 +42,25 @@ calcBmis xs = [bmi w h | (w, h) <- xs]
 initials :: String -> String -> String  
 initials (f:_) (l:_) = [f] ++ "." ++ [l] ++ "."  
 
+tt x = case x of 1 -> 1
+                 2 -> 10
+                 3 -> 30
+
+describeList :: [a] -> String  
+describeList xs = "The list is " ++ case xs of [] -> "empty."  
+                                               [x] -> "a singleton list."   
+                                               xs -> "a longer list."  
+
+describeList' :: [a] -> String  
+describeList' xs = "The list is " ++ what xs  
+    where what [] = "empty."  
+          what [x] = "a singleton list."
+          what xs = "a longer list."
+
+
+fib 0 = 0
+fib 1 = 1
+fib n = fib(n-2) + fib(n-1)
 
 
 
