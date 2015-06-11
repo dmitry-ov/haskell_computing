@@ -1,3 +1,5 @@
+import Data.Function
+
 head'::[a]->a
 head'[] = error "Error. List is empty!"
 head'(x:_) = x
@@ -58,9 +60,29 @@ describeList' xs = "The list is " ++ what xs
           what xs = "a longer list."
 
 
+fib :: Integer -> Integer
 fib 0 = 0
 fib 1 = 1
 fib n = fib(n-2) + fib(n-1)
 
 
+fib' :: Int -> Int
+fib' = (!!) (fix $ (0:) . scanl (+) 1)
+
+maximum' :: (Ord a) => [a] -> a
+maximum' [] = error "no param"
+maximum' [x] = x
+maximum' (x:xs) = max x (maximum' xs)
+
+
+replicate' n x 
+    | n <= 0  = []
+    | otherwise = x : replicate' (n-1) x
+
+
+
+take' n _ 
+    | n <= 0 = []
+take' _ [] = [] 
+take' n (x:xs)  = x : take' (n-1) (xs)
 
